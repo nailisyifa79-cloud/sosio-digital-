@@ -1,0 +1,2136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sosio Digital - NaFaS BK (Guru)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        /* ============================================================
+           RESET & BASE
+           ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f0f4ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .phone {
+            width: 420px;
+            max-width: 100%;
+            background: #ffffff;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(74, 144, 217, 0.25);
+            overflow: hidden;
+            position: relative;
+            max-height: 95vh;
+            overflow-y: auto;
+        }
+
+        .phone::-webkit-scrollbar {
+            width: 4px;
+        }
+        .phone::-webkit-scrollbar-thumb {
+            background: #4A90D9;
+            border-radius: 10px;
+        }
+
+        /* ============================================================
+           STATUS BAR
+           ============================================================ */
+        .status-bar {
+            background: linear-gradient(135deg, #4A90D9, #7B5EA7);
+            padding: 12px 24px 8px;
+            display: flex;
+            justify-content: space-between;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        /* ============================================================
+           HEADER
+           ============================================================ */
+        .header {
+            background: linear-gradient(135deg, #4A90D9, #7B5EA7);
+            padding: 16px 24px 24px;
+            color: white;
+            position: relative;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-top .brand {
+            font-size: 11px;
+            opacity: 0.8;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .header-top .menu-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            transition: 0.3s;
+        }
+
+        .header-top .menu-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin: 6px 0 2px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 span {
+            display: inline-block;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        .header .sub {
+            font-size: 13px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* ============================================================
+           CARD
+           ============================================================ */
+        .card {
+            background: white;
+            margin: -12px 20px 16px;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .card .icon-big {
+            font-size: 40px;
+            margin-bottom: 6px;
+        }
+        .card h3 {
+            color: #2D3748;
+            font-size: 17px;
+            font-weight: 700;
+        }
+        .card p {
+            color: #718096;
+            font-size: 13px;
+            margin: 4px 0;
+            line-height: 1.6;
+        }
+        .card .badge {
+            display: inline-block;
+            background: #E8F5E9;
+            color: #38A169;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        /* ============================================================
+           TOMBOL
+           ============================================================ */
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #F5A623, #F7C948);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 25px rgba(245, 166, 35, 0.4);
+            margin-top: 12px;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 35px rgba(245, 166, 35, 0.5);
+        }
+        .btn-primary:active {
+            transform: scale(0.97);
+        }
+
+        .btn-success {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #68D391, #48BB78);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 25px rgba(104, 211, 145, 0.4);
+            margin-top: 12px;
+        }
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 35px rgba(104, 211, 145, 0.5);
+        }
+        .btn-success:active {
+            transform: scale(0.97);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #4A90D9;
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(74, 144, 217, 0.3);
+            margin-top: 8px;
+        }
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(74, 144, 217, 0.4);
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #4A90D9;
+            background: transparent;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            padding: 4px 0;
+        }
+
+        .btn-danger {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #FC8181;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-danger:hover {
+            background: #F56565;
+        }
+
+        .btn-sm {
+            padding: 6px 14px;
+            font-size: 11px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-sm.blue {
+            background: #EBF8FF;
+            color: #2B6CB0;
+        }
+        .btn-sm.blue:hover {
+            background: #4A90D9;
+            color: white;
+        }
+        .btn-sm.green {
+            background: #F0FFF4;
+            color: #276749;
+        }
+        .btn-sm.green:hover {
+            background: #68D391;
+            color: white;
+        }
+        .btn-sm.red {
+            background: #FFF5F5;
+            color: #C53030;
+        }
+        .btn-sm.red:hover {
+            background: #FC8181;
+            color: white;
+        }
+
+        /* ============================================================
+           FORM
+           ============================================================ */
+        .form-section {
+            padding: 0 20px 20px;
+        }
+
+        .section-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #2D3748;
+            margin: 16px 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title .line {
+            flex: 1;
+            height: 2px;
+            background: #E2E8F0;
+        }
+        .section-sub {
+            font-size: 12px;
+            color: #718096;
+            margin: -6px 0 12px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #4A5568;
+            margin-bottom: 3px;
+        }
+        .form-group label .required {
+            color: #FC8181;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 2px solid #E2E8F0;
+            border-radius: 12px;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            background: #F7FAFC;
+            color: #2D3748;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #4A90D9;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.15);
+            background: white;
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234A90D9' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+            cursor: pointer;
+        }
+
+        .form-group .icon-input {
+            position: relative;
+        }
+        .form-group .icon-input .emoji {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+        }
+        .form-group .icon-input input,
+        .form-group .icon-input select {
+            padding-left: 40px;
+        }
+
+        .form-group .hint {
+            font-size: 11px;
+            color: #A0AEC0;
+            margin-top: 2px;
+        }
+
+        /* ============================================================
+           WATERMARK
+           ============================================================ */
+        .watermark {
+            text-align: center;
+            padding: 14px 0 16px;
+            color: #CBD5E0;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border-top: 1px solid #F0F4FF;
+            margin-top: 6px;
+        }
+
+        /* ============================================================
+           SUCCESS PAGE
+           ============================================================ */
+        .success-page {
+            padding: 30px 20px 20px;
+            text-align: center;
+        }
+        .success-page .check {
+            font-size: 64px;
+            animation: bounce 1s ease infinite;
+        }
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        .success-page h2 {
+            font-size: 22px;
+            color: #2D3748;
+            margin: 10px 0 6px;
+        }
+        .success-page p {
+            color: #718096;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .tip-box {
+            background: #EBF8FF;
+            border-radius: 16px;
+            padding: 14px 16px;
+            margin-top: 16px;
+            text-align: left;
+            border-left: 4px solid #4A90D9;
+        }
+        .tip-box strong {
+            color: #2B6CB0;
+        }
+        .tip-box p {
+            font-size: 13px;
+            color: #2D3748;
+            margin: 2px 0 0;
+        }
+
+        /* ============================================================
+           DASHBOARD
+           ============================================================ */
+        .dash-section {
+            padding: 0 16px 20px;
+        }
+
+        .tab-container {
+            display: flex;
+            gap: 4px;
+            background: #F0F4FF;
+            border-radius: 16px;
+            padding: 4px;
+            margin-bottom: 14px;
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 8px 10px;
+            border: none;
+            background: transparent;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #718096;
+        }
+        .tab-btn.active {
+            background: white;
+            color: #4A90D9;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+        .tab-btn:hover:not(.active) {
+            color: #2D3748;
+        }
+
+        .dash-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 10px 0 14px;
+        }
+        .dash-card {
+            background: white;
+            border-radius: 16px;
+            padding: 14px 12px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid #EDF2F7;
+        }
+        .dash-card .num {
+            font-size: 26px;
+            font-weight: 800;
+            color: #2D3748;
+        }
+        .dash-card .label {
+            font-size: 10px;
+            color: #718096;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .dash-card .highlight {
+            font-size: 16px;
+            font-weight: 700;
+            color: #4A90D9;
+        }
+        .dash-card .sub-label {
+            font-size: 10px;
+            color: #A0AEC0;
+        }
+
+        .chart-box {
+            background: white;
+            border-radius: 16px;
+            padding: 14px;
+            border: 1px solid #EDF2F7;
+            margin: 10px 0 14px;
+        }
+        .chart-box .chart-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #2D3748;
+            margin-bottom: 10px;
+        }
+        .chart-bar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+        .chart-bar .clabel {
+            font-size: 10px;
+            font-weight: 600;
+            color: #4A5568;
+            width: 28px;
+            text-align: right;
+        }
+        .chart-bar .track {
+            flex: 1;
+            height: 18px;
+            background: #EDF2F7;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .chart-bar .fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+        .chart-bar .fill.blue {
+            background: linear-gradient(90deg, #4A90D9, #7B5EA7);
+        }
+        .chart-bar .fill.orange {
+            background: linear-gradient(90deg, #F5A623, #F7C948);
+        }
+        .chart-bar .fill.green {
+            background: linear-gradient(90deg, #68D391, #48BB78);
+        }
+        .chart-bar .fill.red {
+            background: linear-gradient(90deg, #FC8181, #F56565);
+        }
+        .chart-bar .cvalue {
+            font-size: 10px;
+            font-weight: 600;
+            color: #4A5568;
+            width: 20px;
+        }
+
+        .chart-legend {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+            font-size: 9px;
+            color: #718096;
+            flex-wrap: wrap;
+        }
+        .chart-legend span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .chart-legend .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .table-wrap {
+            background: white;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #EDF2F7;
+            overflow-x: auto;
+            margin: 10px 0 14px;
+        }
+        .table-wrap table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+        .table-wrap th {
+            background: #F7FAFC;
+            color: #4A5568;
+            font-weight: 700;
+            padding: 6px 4px;
+            text-align: center;
+            border-bottom: 2px solid #E2E8F0;
+            white-space: nowrap;
+        }
+        .table-wrap td {
+            padding: 6px 4px;
+            text-align: center;
+            border-bottom: 1px solid #EDF2F7;
+            color: #2D3748;
+        }
+        .table-wrap tr:hover td {
+            background: #F7FAFC;
+        }
+
+        .badge-poin {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 10px;
+        }
+        .badge-poin.gold {
+            background: #FEF3C7;
+            color: #D69E2E;
+        }
+        .badge-poin.silver {
+            background: #EDF2F7;
+            color: #718096;
+        }
+        .badge-poin.bronze {
+            background: #FED7D0;
+            color: #DD6B20;
+        }
+
+        .action-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin: 10px 0 8px;
+        }
+        .action-btn {
+            padding: 10px 6px;
+            border: none;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+        .action-btn.blue {
+            background: #EBF8FF;
+            color: #2B6CB0;
+        }
+        .action-btn.blue:hover {
+            background: #4A90D9;
+            color: white;
+        }
+        .action-btn.green {
+            background: #F0FFF4;
+            color: #276749;
+        }
+        .action-btn.green:hover {
+            background: #68D391;
+            color: white;
+        }
+        .action-btn.gray {
+            background: #F7FAFC;
+            color: #4A5568;
+        }
+        .action-btn.gray:hover {
+            background: #A0AEC0;
+            color: white;
+        }
+        .action-btn.purple {
+            background: #F3E8FF;
+            color: #6B46C1;
+        }
+        .action-btn.purple:hover {
+            background: #7B5EA7;
+            color: white;
+        }
+
+        .security-badge {
+            background: #FFF5F5;
+            border-radius: 12px;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0 4px;
+            border-left: 4px solid #FC8181;
+        }
+        .security-badge .icon {
+            font-size: 18px;
+        }
+        .security-badge .text {
+            font-size: 11px;
+            color: #4A5568;
+            font-weight: 500;
+        }
+        .security-badge .text strong {
+            color: #C53030;
+        }
+
+        .mode-toggle {
+            display: flex;
+            gap: 8px;
+            margin: 8px 0 12px;
+        }
+        .mode-toggle .mode-btn {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #E2E8F0;
+            border-radius: 12px;
+            background: white;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #718096;
+        }
+        .mode-toggle .mode-btn.active {
+            border-color: #4A90D9;
+            background: #EBF8FF;
+            color: #2B6CB0;
+        }
+        .mode-toggle .mode-btn:hover:not(.active) {
+            border-color: #A0AEC0;
+        }
+
+        .siswa-list {
+            background: white;
+            border-radius: 16px;
+            border: 1px solid #EDF2F7;
+            padding: 8px 12px;
+            margin: 8px 0 12px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .siswa-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 4px;
+            border-bottom: 1px solid #F0F4FF;
+        }
+        .siswa-item:last-child {
+            border-bottom: none;
+        }
+        .siswa-item .nama {
+            font-size: 13px;
+            font-weight: 500;
+            color: #2D3748;
+        }
+        .siswa-item .no {
+            font-size: 11px;
+            color: #A0AEC0;
+            margin-right: 8px;
+        }
+
+        .siswa-input-row {
+            display: flex;
+            gap: 8px;
+            margin: 6px 0 10px;
+        }
+        .siswa-input-row input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 2px solid #E2E8F0;
+            border-radius: 12px;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            background: #F7FAFC;
+        }
+        .siswa-input-row input:focus {
+            border-color: #4A90D9;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.15);
+        }
+        .siswa-input-row .btn-add {
+            padding: 10px 20px;
+            background: #4A90D9;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+        .siswa-input-row .btn-add:hover {
+            background: #3A7AB9;
+        }
+
+        .manual-input-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .manual-input-grid .form-group {
+            margin-bottom: 6px;
+        }
+        .manual-input-grid .form-group label {
+            font-size: 11px;
+        }
+        .manual-input-grid .form-group input,
+        .manual-input-grid .form-group select {
+            font-size: 12px;
+            padding: 8px 10px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 440px) {
+            .phone {
+                border-radius: 24px;
+            }
+            .header h1 {
+                font-size: 22px;
+            }
+            .dash-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 6px;
+            }
+            .action-row {
+                grid-template-columns: 1fr 1fr;
+            }
+            .manual-input-grid {
+                grid-template-columns: 1fr;
+            }
+            .header-top .menu-btn {
+                font-size: 10px;
+                padding: 4px 10px;
+            }
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2D3748;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 16px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: all 0.5s ease;
+            z-index: 999;
+            pointer-events: none;
+            max-width: 90%;
+            text-align: center;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .toast.success {
+            background: #38A169;
+        }
+        .toast.error {
+            background: #E53E3E;
+        }
+        .toast.info {
+            background: #4A90D9;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="toast" class="toast"></div>
+
+    <div class="phone" id="app">
+
+        <!-- ===== STATUS BAR ===== -->
+        <div class="status-bar">
+            <span>📶 10:25</span>
+            <span>🔋 87%</span>
+        </div>
+
+        <!-- ==========================================================
+        PAGE: HOME
+        ========================================================== -->
+        <div id="page-home">
+            <div class="header">
+                <div class="header-top">
+                    <span class="brand">✦ NaFaS BK</span>
+                    <button class="menu-btn" onclick="showPage('page-dashboard')">📊 Dashboard Guru</button>
+                </div>
+                <h1>🌈 SOSIO <span>✨</span> DIGITAL</h1>
+                <div class="sub">Sosiogram Digital untuk BK</div>
+            </div>
+
+            <div class="card">
+                <div class="icon-big">📋</div>
+                <h3>Kuesioner Sosiogram</h3>
+                <p>
+                    Kenali teman-temanmu lebih dalam!<br />
+                    Jawabanmu <strong>100% rahasia</strong> dan hanya<br />
+                    guru yang dapat melihat hasilnya.
+                </p>
+                <div class="badge">🔒 AMAN & TERPERCAYA</div>
+            </div>
+
+            <!-- ===== MODE TOGGLE ===== -->
+            <div style="padding: 0 20px;">
+                <div class="mode-toggle">
+                    <button class="mode-btn active" id="modeHpBtn" onclick="setMode('hp')">
+                        📱 Mode HP
+                    </button>
+                    <button class="mode-btn" id="modeNonHpBtn" onclick="setMode('nonhp')">
+                        📄 Mode Non-HP
+                    </button>
+                </div>
+            </div>
+
+            <!-- ===== MODE HP ===== -->
+            <div id="modeHp" style="padding: 0 20px;">
+                <div style="background: #EBF8FF; border-radius: 16px; padding: 14px 16px; margin-bottom: 12px; border-left: 4px solid #4A90D9;">
+                    <div style="font-size: 13px; font-weight: 600; color: #2B6CB0;">📱 Mode HP</div>
+                    <div style="font-size: 12px; color: #4A5568; margin-top: 2px;">
+                        Siswa mengisi via link. Hasil otomatis masuk ke dashboard guru.
+                    </div>
+                </div>
+
+                <div style="background: #F7FAFC; border-radius: 16px; padding: 14px 16px; margin-bottom: 12px;">
+                    <div style="font-size: 12px; font-weight: 600; color: #4A5568;">🔗 LINK KUESIONER</div>
+                    <div style="display: flex; gap: 8px; margin-top: 6px;">
+                        <input type="text" id="shareLink" value="https://nafas-bk.github.io/sosio-digital/" readonly style="flex:1; padding: 10px 14px; border: 2px solid #E2E8F0; border-radius: 12px; font-size: 12px; background: white; font-family: 'Poppins', sans-serif;" />
+                        <button class="btn-sm blue" onclick="copyLink()">📋 Salin</button>
+                    </div>
+                    <div style="font-size: 11px; color: #A0AEC0; margin-top: 4px;">
+                        Bagikan link ini ke siswa via WhatsApp / GCR
+                    </div>
+                </div>
+
+                <button class="btn-primary" onclick="showPage('page-form')">
+                    🚀 MULAI ISI (Demo Siswa)
+                </button>
+            </div>
+
+            <!-- ===== MODE NON-HP ===== -->
+            <div id="modeNonHp" class="hidden" style="padding: 0 20px;">
+                <div style="background: #FEF3C7; border-radius: 16px; padding: 14px 16px; margin-bottom: 12px; border-left: 4px solid #F5A623;">
+                    <div style="font-size: 13px; font-weight: 600; color: #D69E2E;">📄 Mode Non-HP</div>
+                    <div style="font-size: 12px; color: #4A5568; margin-top: 2px;">
+                        Print kuesioner, siswa isi di kertas, guru entri hasil di sini.
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+                    <button class="btn-sm green" onclick="printKuesioner()">🖨️ Print Kuesioner</button>
+                    <button class="btn-sm blue" onclick="showPage('page-manual-input')">✏️ Entri Hasil Manual</button>
+                </div>
+
+                <div style="background: #F7FAFC; border-radius: 16px; padding: 14px 16px;">
+                    <div style="font-size: 12px; font-weight: 600; color: #4A5568;">📋 Langkah:</div>
+                    <ol style="font-size: 12px; color: #4A5568; margin: 6px 0 0 18px; line-height: 1.8;">
+                        <li>Print kuesioner untuk dibagikan ke siswa</li>
+                        <li>Siswa mengisi di kertas</li>
+                        <li>Guru mengentri hasil ke form manual</li>
+                        <li>Hasil otomatis muncul di dashboard</li>
+                    </ol>
+                </div>
+
+                <div style="margin-top: 12px;">
+                    <button class="btn-secondary" onclick="showPage('page-manual-input')" style="width:100%;">
+                        ✏️ ENTRI HASIL MANUAL
+                    </button>
+                </div>
+            </div>
+
+            <div style="padding: 0 20px; margin-top: 10px;">
+                <div class="security-badge">
+                    <span class="icon">🔒</span>
+                    <span class="text">
+                        <strong>100% RAHASIA</strong><br />
+                        Hanya guru yang dapat melihat hasil
+                    </span>
+                </div>
+            </div>
+
+            <div class="watermark">🌟 NaFaS BK - Trusted Since 2026</div>
+        </div>
+
+        <!-- ==========================================================
+        PAGE: FORM SISWA (DEMO)
+        ========================================================== -->
+        <div id="page-form" class="hidden">
+            <div style="background: white; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #EDF2F7; position: sticky; top: 0; z-index: 5;">
+                <button class="btn-back" onclick="showPage('page-home')">← Kembali</button>
+                <span style="font-size: 14px; font-weight: 600; color: #2D3748;">📝 Kuesioner</span>
+                <span id="progressText" style="font-size: 12px; color: #A0AEC0;">0% selesai</span>
+            </div>
+            <div style="padding: 0 20px;">
+                <div style="width:100%; height:4px; background:#EDF2F7; border-radius:4px; margin:4px 0 2px; overflow:hidden;">
+                    <div id="progressFill" style="height:100%; width:0%; background:linear-gradient(90deg,#4A90D9,#7B5EA7); border-radius:4px; transition:width 0.5s ease;"></div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <!-- Identitas -->
+                <div class="section-title">📝 Identitas Diri <span class="line"></span></div>
+
+                <div class="form-group">
+                    <label>✏️ Nama Lengkap <span class="required">*</span></label>
+                    <div class="icon-input">
+                        <span class="emoji">👤</span>
+                        <input type="text" id="fNama" placeholder="Masukkan nama lengkap" oninput="updateProgress()" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>📚 Kelas <span class="required">*</span></label>
+                    <div class="icon-input">
+                        <span class="emoji">🏫</span>
+                        <select id="fKelas" onchange="updateProgress()">
+                            <option value="">▼ Pilih Kelas</option>
+                            <option>VII A</option><option>VII B</option><option>VII C</option>
+                            <option>VIII A</option><option>VIII B</option><option>VIII C</option>
+                            <option>IX A</option><option>IX B</option><option>IX C</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Teman Disukai -->
+                <div class="section-title" style="margin-top:20px;">👫 Teman yang Disukai <span class="line"></span></div>
+                <div class="section-sub">Pilih 2 teman</div>
+
+                <div class="form-group">
+                    <label>1️⃣ Teman Disukai <span class="required">*</span></label>
+                    <div class="icon-input">
+                        <span class="emoji">❤️</span>
+                        <select id="fSuka1" onchange="updateProgress()">
+                            <option value="">▼ Pilih teman</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>2️⃣ Teman Disukai <span class="required">*</span></label>
+                    <div class="icon-input">
+                        <span class="emoji">💛</span>
+                        <select id="fSuka2" onchange="updateProgress()">
+                            <option value="">▼ Pilih teman</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Kurang Nyaman -->
+                <div class="section-title" style="margin-top:20px;">😕 Teman Kurang Nyaman <span class="line"></span></div>
+                <div class="section-sub">Pilih 2 teman</div>
+
+                <div class="form-group">
+                    <label>1️⃣ Kurang Nyaman <span class="required">*</span></label>
+                    <div class="icon-input">
+                        <span class="emoji">😐</span>
+                        <select id="fKurang1" onchange="updateProgress()">
+                            <option value="">▼ Pilih teman</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>2️⃣ Kurang Nyaman <span class="required">*</span></label>
+                    <div class="icon-input">
+                        <span class="emoji">😟</span>
+                        <select id="fKurang2" onchange="updateProgress()">
+                            <option value="">▼ Pilih teman</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Jiwa Kepemimpinan -->
+                <div class="section-title" style="margin-top:20px;">⭐ Jiwa Kepemimpinan <span class="line"></span></div>
+                <div class="section-sub">Pilih 1 teman</div>
+
+                <div class="form-group">
+                    <label>👑 Pemimpin Terbaik <span class="required">*</span></label>
+                    <div class="icon-input">
+                        <span class="emoji">⭐</span>
+                        <select id="fPemimpin" onchange="updateProgress()">
+                            <option value="">▼ Pilih teman</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Mudah Kolaborasi -->
+                <div class="section-title" style="margin-top:20px;">🤝 Mudah Diajak Kolaborasi <span class="line"></span></div>
+                <div class="section-sub">Pilih 1 teman</div>
+
+                <div class="form-group">
+                    <label>🤝 Kolaborator Terbaik <span class="required">*</span></label>
+                    <div class="icon-input">
+                        <span class="emoji">🤝</span>
+                        <select id="fKolab" onchange="updateProgress()">
+                            <option value="">▼ Pilih teman</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn-success" onclick="submitForm()">✅ SIMPAN & KIRIM</button>
+
+                <div style="font-size:12px; color:#FC8181; text-align:center; margin-top:8px;">
+                    ⚠️ Pastikan semua data sudah terisi dengan benar!
+                </div>
+
+                <div class="watermark" style="border-top:none; margin-top:6px;">🌟 NaFaS BK</div>
+            </div>
+        </div>
+
+        <!-- ==========================================================
+        PAGE: SUCCESS
+        ========================================================== -->
+        <div id="page-success" class="hidden">
+            <div class="header" style="padding:30px 20px 40px;">
+                <div style="font-size:12px; opacity:0.7; text-align:center;">✦ ✦ ✦ ✦ ✦</div>
+            </div>
+            <div class="success-page">
+                <div class="check">🎉✅🎉</div>
+                <h2>TERIMA KASIH!</h2>
+                <p>
+                    Jawabanmu sudah tersimpan dengan aman. 🌟<br />
+                    Kamu hebat sudah mengisi dengan jujur! 💪
+                </p>
+
+                <button class="btn-secondary" onclick="showPage('page-home')">🔄 KEMBALI</button>
+
+                <div class="tip-box">
+                    <strong>💡 Tahukah kamu?</strong>
+                    <p>Kejujuran adalah awal dari pertemanan yang baik. Terima kasih sudah berkontribusi! 😊</p>
+                </div>
+
+                <div class="watermark" style="border-top:none; margin-top:16px;">🌟 NaFaS BK</div>
+            </div>
+        </div>
+
+        <!-- ==========================================================
+        PAGE: MANUAL INPUT
+        ========================================================== -->
+        <div id="page-manual-input" class="hidden">
+            <div style="background: white; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #EDF2F7; position: sticky; top: 0; z-index: 5;">
+                <button class="btn-back" onclick="showPage('page-home')">← Kembali</button>
+                <span style="font-size: 14px; font-weight: 600; color: #2D3748;">✏️ Entri Manual</span>
+                <span style="font-size: 11px; color: #A0AEC0;">Mode Non-HP</span>
+            </div>
+
+            <div class="form-section">
+                <div style="background: #FEF3C7; border-radius: 12px; padding: 12px 16px; margin-bottom: 14px; border-left: 4px solid #F5A623;">
+                    <div style="font-size: 13px; font-weight: 600; color: #D69E2E;">📄 Entri Hasil dari Kertas</div>
+                    <div style="font-size: 12px; color: #4A5568;">Masukkan jawaban siswa yang sudah diisi di kertas.</div>
+                </div>
+
+                <!-- Identitas -->
+                <div class="section-title">📝 Identitas Siswa <span class="line"></span></div>
+
+                <div class="form-group">
+                    <label>✏️ Nama Lengkap <span class="required">*</span></label>
+                    <div class="icon-input">
+                        <span class="emoji">👤</span>
+                        <input type="text" id="mNama" placeholder="Nama siswa" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>📚 Kelas <span class="required">*</span></label>
+                    <div class="icon-input">
+                        <span class="emoji">🏫</span>
+                        <select id="mKelas">
+                            <option value="">▼ Pilih Kelas</option>
+                            <option>VII A</option><option>VII B</option><option>VII C</option>
+                            <option>VIII A</option><option>VIII B</option><option>VIII C</option>
+                            <option>IX A</option><option>IX B</option><option>IX C</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Jawaban -->
+                <div class="section-title" style="margin-top:16px;">📋 Jawaban Siswa <span class="line"></span></div>
+
+                <div class="manual-input-grid">
+                    <div class="form-group">
+                        <label>👫 Teman Disukai 1</label>
+                        <select id="mSuka1"><option value="">Pilih</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label>👫 Teman Disukai 2</label>
+                        <select id="mSuka2"><option value="">Pilih</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label>😕 Kurang Nyaman 1</label>
+                        <select id="mKurang1"><option value="">Pilih</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label>😕 Kurang Nyaman 2</label>
+                        <select id="mKurang2"><option value="">Pilih</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label>⭐ Jiwa Pemimpin</label>
+                        <select id="mPemimpin"><option value="">Pilih</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label>🤝 Mudah Kolaborasi</label>
+                        <select id="mKolab"><option value="">Pilih</option></select>
+                    </div>
+                </div>
+
+                <button class="btn-success" onclick="submitManual()">📥 SIMPAN HASIL</button>
+
+                <div style="margin-top:10px;">
+                    <button class="btn-secondary" onclick="showPage('page-dashboard')" style="width:100%; font-size:14px; padding:12px;">
+                        📊 LIHAT DASHBOARD
+                    </button>
+                </div>
+
+                <div class="watermark" style="border-top:none; margin-top:12px;">🌟 NaFaS BK</div>
+            </div>
+        </div>
+
+        <!-- ==========================================================
+        PAGE: DASHBOARD GURU
+        ========================================================== -->
+        <div id="page-dashboard" class="hidden">
+            <div class="header" style="padding:14px 20px 18px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <div style="font-size:11px; opacity:0.7;">📊</div>
+                        <div style="font-size:20px; font-weight:800;">SOSIO DIGITAL</div>
+                        <div style="font-size:10px; opacity:0.8;">by NaFaS BK</div>
+                    </div>
+                    <div style="display:flex; gap:6px; align-items:center;">
+                        <span style="background:rgba(255,255,255,0.2); padding:4px 12px; border-radius:20px; font-size:10px;">👤 Guru</span>
+                        <button class="menu-btn" onclick="showPage('page-home')" style="font-size:10px; padding:4px 10px;">🏠 Home</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dash-section">
+                <!-- Tabs -->
+                <div class="tab-container">
+                    <button class="tab-btn active" onclick="switchTab(this, 'tabDashboard')">📊 Dashboard</button>
+                    <button class="tab-btn" onclick="switchTab(this, 'tabSiswa')">👥 Siswa</button>
+                    <button class="tab-btn" onclick="switchTab(this, 'tabData')">📋 Data</button>
+                </div>
+
+                <!-- TAB: Dashboard -->
+                <div id="tabDashboard">
+                    <div class="dash-grid" id="dashGrid">
+                        <div class="dash-card">
+                            <div class="num" id="totalSiswa">0</div>
+                            <div class="label">📋 Total Responden</div>
+                        </div>
+                        <div class="dash-card">
+                            <div class="highlight" id="populerSiswa">-</div>
+                            <div class="label">⭐ Populer Terbanyak</div>
+                            <div class="sub-label" id="populerJumlah">0 suka</div>
+                        </div>
+                        <div class="dash-card">
+                            <div class="highlight" id="pemimpinSiswa">-</div>
+                            <div class="label">👑 Pemimpin Terbaik</div>
+                            <div class="sub-label" id="pemimpinJumlah">0 pilihan</div>
+                        </div>
+                        <div class="dash-card">
+                            <div class="highlight" id="kolabSiswa">-</div>
+                            <div class="label">🤝 Kolaborasi Terbaik</div>
+                            <div class="sub-label" id="kolabJumlah">0 pilihan</div>
+                        </div>
+                    </div>
+
+                    <div class="chart-box">
+                        <div class="chart-title">📈 GRAFIK HASIL SOSIOGRAM</div>
+                        <div id="chartContainer">
+                            <div style="text-align:center; color:#A0AEC0; padding:20px; font-size:13px;">
+                                Belum ada data. Silakan isi kuesioner atau entri manual.
+                            </div>
+                        </div>
+                        <div class="chart-legend">
+                            <span><span class="dot" style="background:#4A90D9;"></span> Disukai</span>
+                            <span><span class="dot" style="background:#F5A623;"></span> Kurang Nyaman</span>
+                            <span><span class="dot" style="background:#68D391;"></span> Pemimpin</span>
+                            <span><span class="dot" style="background:#FC8181;"></span> Kolaborasi</span>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>👍</th>
+                                    <th>😕</th>
+                                    <th>⭐</th>
+                                    <th>🤝</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                <tr>
+                                    <td colspan="7" style="text-align:center; color:#A0AEC0; padding:20px;">
+                                        Belum ada data siswa.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="action-row">
+                        <button class="action-btn blue" onclick="cetakPDF()">🖨️ CETAK PDF</button>
+                        <button class="action-btn green" onclick="exportExcel()">📥 EKSPOR EXCEL</button>
+                        <button class="action-btn gray" onclick="refreshData()">🔄 REFRESH</button>
+                    </div>
+
+                    <div class="security-badge" style="border-left-color:#4A90D9; background:#EBF8FF;">
+                        <span class="icon">🔒</span>
+                        <span class="text">
+                            <strong>Data ini RAHASIA</strong><br />
+                            Hanya untuk guru. Jangan bagikan ke siswa!
+                        </span>
+                    </div>
+                </div>
+
+                <!-- TAB: Siswa -->
+                <div id="tabSiswa" class="hidden">
+                    <div style="background: white; border-radius:16px; padding:16px; border:1px solid #EDF2F7; margin-bottom:12px;">
+                        <div style="font-size:14px; font-weight:700; color:#2D3748; margin-bottom:8px;">👥 Daftar Siswa</div>
+                        <div style="font-size:12px; color:#718096; margin-bottom:8px;">
+                            Tambahkan nama siswa yang akan muncul di dropdown pilihan.
+                        </div>
+
+                        <div class="siswa-input-row">
+                            <input type="text" id="inputNamaSiswa" placeholder="Nama siswa..." onkeydown="if(event.key==='Enter') tambahSiswa()" />
+                            <button class="btn-add" onclick="tambahSiswa()">+ Tambah</button>
+                        </div>
+
+                        <div class="siswa-list" id="siswaList">
+                            <div style="text-align:center; color:#A0AEC0; padding:16px; font-size:13px;">
+                                Belum ada siswa. Tambahkan nama di atas.
+                            </div>
+                        </div>
+
+                        <div style="display:flex; gap:8px; margin-top:8px; flex-wrap:wrap;">
+                            <button class="btn-sm blue" onclick="tambahSiswaBulk()">📋 Tambah Banyak</button>
+                            <button class="btn-sm red" onclick="resetSiswa()">🗑️ Reset Semua</button>
+                        </div>
+                    </div>
+
+                    <div style="background: #F7FAFC; border-radius:16px; padding:14px 16px;">
+                        <div style="font-size:12px; font-weight:600; color:#4A5568;">💡 Tips:</div>
+                        <div style="font-size:12px; color:#718096; margin-top:4px; line-height:1.6;">
+                            • Tambahkan semua nama siswa di kelas<br />
+                            • Nama akan muncul di dropdown pilihan<br />
+                            • Data tersimpan otomatis di browser
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: Data -->
+                <div id="tabData" class="hidden">
+                    <div style="background: white; border-radius:16px; padding:16px; border:1px solid #EDF2F7; margin-bottom:12px;">
+                        <div style="font-size:14px; font-weight:700; color:#2D3748; margin-bottom:8px;">📋 Semua Data Hasil</div>
+                        <div style="font-size:12px; color:#718096; margin-bottom:10px;">
+                            Data dari siswa (mode HP) dan entri manual (mode Non-HP).
+                        </div>
+                        <div class="table-wrap" style="margin:0;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>Kelas</th>
+                                        <th>Suka 1</th>
+                                        <th>Suka 2</th>
+                                        <th>Kurang 1</th>
+                                        <th>Kurang 2</th>
+                                        <th>Pemimpin</th>
+                                        <th>Kolab</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dataTableBody">
+                                    <tr>
+                                        <td colspan="9" style="text-align:center; color:#A0AEC0; padding:20px;">
+                                            Belum ada data.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                        <button class="action-btn blue" onclick="cetakPDF()" style="flex:1;">🖨️ CETAK PDF</button>
+                        <button class="action-btn green" onclick="exportExcel()" style="flex:1;">📥 EKSPOR EXCEL</button>
+                        <button class="action-btn red" onclick="resetData()" style="flex:1; background:#FFF5F5; color:#C53030;">🗑️ Hapus Semua Data</button>
+                    </div>
+                </div>
+
+                <div class="watermark" style="border-top:none; margin-top:12px;">🌟 NaFaS BK - Solusi Sosiogram Digital v2.0</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ============================================================
+    JAVASCRIPT
+    ============================================================ -->
+    <script>
+        // ============================================================
+        // DATA STORE
+        // ============================================================
+        let dataStore = {
+            siswa: ['Andi', 'Budi', 'Citra', 'Dedi', 'Eka', 'Fani', 'Gita', 'Hadi', 'Indra', 'Joko'],
+            hasil: []
+        };
+
+        function loadData() {
+            try {
+                const saved = localStorage.getItem('sosioDigitalData');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    dataStore.siswa = parsed.siswa || dataStore.siswa;
+                    dataStore.hasil = parsed.hasil || [];
+                }
+            } catch (e) {}
+            renderSemua();
+        }
+
+        function saveData() {
+            localStorage.setItem('sosioDigitalData', JSON.stringify(dataStore));
+            renderSemua();
+        }
+
+        // ============================================================
+        // RENDER FUNCTIONS
+        // ============================================================
+        function renderDropdowns() {
+            const selects = [
+                'fSuka1', 'fSuka2', 'fKurang1', 'fKurang2', 'fPemimpin', 'fKolab',
+                'mSuka1', 'mSuka2', 'mKurang1', 'mKurang2', 'mPemimpin', 'mKolab'
+            ];
+            selects.forEach(id => {
+                const sel = document.getElementById(id);
+                if (!sel) return;
+                const current = sel.value;
+                sel.innerHTML = '<option value="">▼ Pilih teman</option>';
+                dataStore.siswa.forEach(nama => {
+                    const opt = document.createElement('option');
+                    opt.value = nama;
+                    opt.textContent = nama;
+                    sel.appendChild(opt);
+                });
+                if (current && dataStore.siswa.includes(current)) {
+                    sel.value = current;
+                }
+            });
+        }
+
+        function renderSiswaList() {
+            const container = document.getElementById('siswaList');
+            if (!container) return;
+            if (dataStore.siswa.length === 0) {
+                container.innerHTML =
+                    '<div style="text-align:center; color:#A0AEC0; padding:16px; font-size:13px;">Belum ada siswa. Tambahkan nama di atas.</div>';
+                return;
+            }
+            let html = '';
+            dataStore.siswa.forEach((nama, i) => {
+                html += `
+                        <div class="siswa-item">
+                            <span><span class="no">${i+1}.</span><span class="nama">${nama}</span></span>
+                            <button class="btn-sm red" onclick="hapusSiswa(${i})">✕</button>
+                        </div>
+                    `;
+            });
+            container.innerHTML = html;
+        }
+
+        function renderDashboard() {
+            const hasil = dataStore.hasil;
+            const total = hasil.length;
+            document.getElementById('totalSiswa').textContent = total;
+
+            const stats = {};
+            dataStore.siswa.forEach(n => {
+                stats[n] = { suka: 0, kurang: 0, pemimpin: 0, kolab: 0, total: 0 };
+            });
+
+            hasil.forEach(h => {
+                const fields = ['suka1', 'suka2', 'kurang1', 'kurang2', 'pemimpin', 'kolab'];
+                const map = {
+                    suka1: 'suka',
+                    suka2: 'suka',
+                    kurang1: 'kurang',
+                    kurang2: 'kurang',
+                    pemimpin: 'pemimpin',
+                    kolab: 'kolab'
+                };
+                fields.forEach(f => {
+                    const val = h[f];
+                    if (val && stats[val]) {
+                        stats[val][map[f]] = (stats[val][map[f]] || 0) + 1;
+                        stats[val].total = (stats[val].total || 0) + 1;
+                    }
+                });
+            });
+
+            let populer = '-',
+                popJum = 0;
+            let pemimpin = '-',
+                pemJum = 0;
+            let kolab = '-',
+                kolJum = 0;
+
+            Object.keys(stats).forEach(n => {
+                if (stats[n].suka > popJum) { popJum = stats[n].suka;
+                    populer = n; }
+                if (stats[n].pemimpin > pemJum) { pemJum = stats[n].pemimpin;
+                    pemimpin = n; }
+                if (stats[n].kolab > kolJum) { kolJum = stats[n].kolab;
+                    kolab = n; }
+            });
+
+            document.getElementById('populerSiswa').textContent = populer;
+            document.getElementById('populerJumlah').textContent = popJum + ' suka';
+            document.getElementById('pemimpinSiswa').textContent = pemimpin;
+            document.getElementById('pemimpinJumlah').textContent = pemJum + ' pilihan';
+            document.getElementById('kolabSiswa').textContent = kolab;
+            document.getElementById('kolabJumlah').textContent = kolJum + ' pilihan';
+
+            renderChart(stats);
+            renderTable(stats);
+            renderDataTable();
+        }
+
+        function renderChart(stats) {
+            const container = document.getElementById('chartContainer');
+            const names = dataStore.siswa.slice(0, 12);
+            if (names.length === 0 || dataStore.hasil.length === 0) {
+                container.innerHTML =
+                    `<div style="text-align:center; color:#A0AEC0; padding:20px; font-size:13px;">Belum ada data. Silakan isi kuesioner atau entri manual.</div>`;
+                return;
+            }
+            const maxVal = Math.max(1, ...names.map(n => stats[n]?.suka || 0));
+            let html = '';
+            names.forEach(n => {
+                const s = stats[n] || { suka: 0, kurang: 0, pemimpin: 0, kolab: 0 };
+                const total = s.suka + s.kurang + s.pemimpin + s.kolab;
+                if (total === 0) return;
+                const pct = maxVal > 0 ? (s.suka / maxVal) * 100 : 0;
+                html += `
+                        <div class="chart-bar">
+                            <span class="clabel">${n}</span>
+                            <div class="track">
+                                <div class="fill blue" style="width:${Math.min(pct, 100)}%;"></div>
+                            </div>
+                            <span class="cvalue">${s.suka}</span>
+                        </div>
+                    `;
+            });
+            if (!html) {
+                html =
+                    `<div style="text-align:center; color:#A0AEC0; padding:20px; font-size:13px;">Belum ada data yang cukup untuk grafik.</div>`;
+            }
+            container.innerHTML = html;
+        }
+
+        function renderTable(stats) {
+            const tbody = document.getElementById('tableBody');
+            const names = dataStore.siswa;
+            if (names.length === 0 || dataStore.hasil.length === 0) {
+                tbody.innerHTML =
+                    `<tr><td colspan="7" style="text-align:center; color:#A0AEC0; padding:20px;">Belum ada data siswa.</td></tr>`;
+                return;
+            }
+            let html = '';
+            let no = 1;
+            const sorted = names.map(n => {
+                const s = stats[n] || { suka: 0, kurang: 0, pemimpin: 0, kolab: 0 };
+                return { nama: n, ...s };
+            }).sort((a, b) => (b.suka + b.pemimpin + b.kolab) - (a.suka + a.pemimpin + a.kolab));
+
+            sorted.forEach(s => {
+                const total = s.suka + s.kurang + s.pemimpin + s.kolab;
+                let badge = 'silver';
+                if (no === 1) badge = 'gold';
+                else if (no === 2 || no === 3) badge = 'bronze';
+                html += `
+                        <tr>
+                            <td>${no}</td>
+                            <td><strong>${s.nama}</strong></td>
+                            <td>${s.suka}</td>
+                            <td>${s.kurang}</td>
+                            <td>${s.pemimpin}</td>
+                            <td>${s.kolab}</td>
+                            <td><span class="badge-poin ${badge}">${total}</span></td>
+                        </tr>
+                    `;
+                no++;
+            });
+            tbody.innerHTML = html;
+        }
+
+        function renderDataTable() {
+            const tbody = document.getElementById('dataTableBody');
+            const hasil = dataStore.hasil;
+            if (hasil.length === 0) {
+                tbody.innerHTML =
+                    `<tr><td colspan="9" style="text-align:center; color:#A0AEC0; padding:20px;">Belum ada data.</td></tr>`;
+                return;
+            }
+            let html = '';
+            hasil.forEach((h, i) => {
+                html += `
+                        <tr>
+                            <td>${i+1}</td>
+                            <td>${h.nama || '-'}</td>
+                            <td>${h.kelas || '-'}</td>
+                            <td>${h.suka1 || '-'}</td>
+                            <td>${h.suka2 || '-'}</td>
+                            <td>${h.kurang1 || '-'}</td>
+                            <td>${h.kurang2 || '-'}</td>
+                            <td>${h.pemimpin || '-'}</td>
+                            <td>${h.kolab || '-'}</td>
+                        </tr>
+                    `;
+            });
+            tbody.innerHTML = html;
+        }
+
+        function renderSemua() {
+            renderDropdowns();
+            renderSiswaList();
+            renderDashboard();
+            updateProgress();
+        }
+
+        // ============================================================
+        // SISWA MANAGEMENT
+        // ============================================================
+        function tambahSiswa() {
+            const input = document.getElementById('inputNamaSiswa');
+            const nama = input.value.trim();
+            if (!nama) {
+                showToast('Masukkan nama siswa!', 'error');
+                return;
+            }
+            if (dataStore.siswa.includes(nama)) {
+                showToast('Nama sudah ada!', 'error');
+                return;
+            }
+            dataStore.siswa.push(nama);
+            input.value = '';
+            saveData();
+            showToast('✅ ' + nama + ' berhasil ditambahkan!', 'success');
+        }
+
+        function tambahSiswaBulk() {
+            const input = prompt('Masukkan nama siswa (pisahkan dengan koma):\nContoh: Andi, Budi, Citra');
+            if (!input) return;
+            const names = input.split(',').map(s => s.trim()).filter(s => s);
+            let added = 0;
+            names.forEach(n => {
+                if (!dataStore.siswa.includes(n)) {
+                    dataStore.siswa.push(n);
+                    added++;
+                }
+            });
+            saveData();
+            showToast('✅ ' + added + ' siswa berhasil ditambahkan!', 'success');
+        }
+
+        function hapusSiswa(index) {
+            if (confirm('Hapus ' + dataStore.siswa[index] + '?')) {
+                dataStore.siswa.splice(index, 1);
+                saveData();
+                showToast('🗑️ Siswa dihapus', 'info');
+            }
+        }
+
+        function resetSiswa() {
+            if (confirm('Hapus semua siswa? Data hasil akan tetap tersimpan.')) {
+                dataStore.siswa = [];
+                saveData();
+                showToast('🗑️ Semua siswa dihapus', 'info');
+            }
+        }
+
+        // ============================================================
+        // FORM SUBMIT
+        // ============================================================
+        function submitForm() {
+            const nama = document.getElementById('fNama').value.trim();
+            const kelas = document.getElementById('fKelas').value;
+            const suka1 = document.getElementById('fSuka1').value;
+            const suka2 = document.getElementById('fSuka2').value;
+            const kurang1 = document.getElementById('fKurang1').value;
+            const kurang2 = document.getElementById('fKurang2').value;
+            const pemimpin = document.getElementById('fPemimpin').value;
+            const kolab = document.getElementById('fKolab').value;
+
+            if (!nama || !kelas || !suka1 || !suka2 || !kurang1 || !kurang2 || !pemimpin || !kolab) {
+                showToast('⚠️ Semua data harus diisi!', 'error');
+                return;
+            }
+            if (suka1 === suka2) {
+                showToast('⚠️ Teman disukai 1 dan 2 harus berbeda!', 'error');
+                return;
+            }
+            if (kurang1 === kurang2) {
+                showToast('⚠️ Teman kurang nyaman 1 dan 2 harus berbeda!', 'error');
+                return;
+            }
+
+            dataStore.hasil.push({
+                nama,
+                kelas,
+                suka1,
+                suka2,
+                kurang1,
+                kurang2,
+                pemimpin,
+                kolab,
+                timestamp: new Date().toISOString()
+            });
+
+            saveData();
+            document.getElementById('fNama').value = '';
+            document.getElementById('fKelas').value = '';
+            ['fSuka1', 'fSuka2', 'fKurang1', 'fKurang2', 'fPemimpin', 'fKolab'].forEach(id => {
+                document.getElementById(id).value = '';
+            });
+
+            showToast('✅ Jawaban berhasil disimpan!', 'success');
+            showPage('page-success');
+        }
+
+        // ============================================================
+        // MANUAL SUBMIT
+        // ============================================================
+        function submitManual() {
+            const nama = document.getElementById('mNama').value.trim();
+            const kelas = document.getElementById('mKelas').value;
+            const suka1 = document.getElementById('mSuka1').value;
+            const suka2 = document.getElementById('mSuka2').value;
+            const kurang1 = document.getElementById('mKurang1').value;
+            const kurang2 = document.getElementById('mKurang2').value;
+            const pemimpin = document.getElementById('mPemimpin').value;
+            const kolab = document.getElementById('mKolab').value;
+
+            if (!nama || !kelas || !suka1 || !suka2 || !kurang1 || !kurang2 || !pemimpin || !kolab) {
+                showToast('⚠️ Semua data harus diisi!', 'error');
+                return;
+            }
+            if (suka1 === suka2) {
+                showToast('⚠️ Teman disukai 1 dan 2 harus berbeda!', 'error');
+                return;
+            }
+            if (kurang1 === kurang2) {
+                showToast('⚠️ Teman kurang nyaman 1 dan 2 harus berbeda!', 'error');
+                return;
+            }
+
+            dataStore.hasil.push({
+                nama,
+                kelas,
+                suka1,
+                suka2,
+                kurang1,
+                kurang2,
+                pemimpin,
+                kolab,
+                timestamp: new Date().toISOString(),
+                manual: true
+            });
+
+            saveData();
+            document.getElementById('mNama').value = '';
+            document.getElementById('mKelas').value = '';
+            ['mSuka1', 'mSuka2', 'mKurang1', 'mKurang2', 'mPemimpin', 'mKolab'].forEach(id => {
+                document.getElementById(id).value = '';
+            });
+
+            showToast('✅ Hasil manual berhasil disimpan!', 'success');
+            showPage('page-dashboard');
+        }
+
+        // ============================================================
+        // MODE TOGGLE
+        // ============================================================
+        function setMode(mode) {
+            document.getElementById('modeHp').classList.toggle('hidden', mode !== 'hp');
+            document.getElementById('modeNonHp').classList.toggle('hidden', mode !== 'nonhp');
+            document.getElementById('modeHpBtn').classList.toggle('active', mode === 'hp');
+            document.getElementById('modeNonHpBtn').classList.toggle('active', mode === 'nonhp');
+        }
+
+        // ============================================================
+        // PAGE NAVIGATION
+        // ============================================================
+        function showPage(pageId) {
+            const pages = ['page-home', 'page-form', 'page-success', 'page-dashboard', 'page-manual-input'];
+            pages.forEach(id => {
+                document.getElementById(id).classList.toggle('hidden', id !== pageId);
+            });
+            document.querySelector('.phone').scrollTop = 0;
+            if (pageId === 'page-dashboard' || pageId === 'page-home') {
+                renderSemua();
+            }
+            if (pageId === 'page-form') {
+                updateProgress();
+            }
+            if (pageId === 'page-manual-input') {
+                renderDropdowns();
+            }
+        }
+
+        // ============================================================
+        // TAB SWITCH
+        // ============================================================
+        function switchTab(btn, tabId) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            ['tabDashboard', 'tabSiswa', 'tabData'].forEach(id => {
+                document.getElementById(id).classList.toggle('hidden', id !== tabId);
+            });
+            if (tabId === 'tabSiswa') renderSiswaList();
+            if (tabId === 'tabData') renderDataTable();
+        }
+
+        // ============================================================
+        // PROGRESS
+        // ============================================================
+        function updateProgress() {
+            const fields = [
+                document.getElementById('fNama'),
+                document.getElementById('fKelas'),
+                document.getElementById('fSuka1'),
+                document.getElementById('fSuka2'),
+                document.getElementById('fKurang1'),
+                document.getElementById('fKurang2'),
+                document.getElementById('fPemimpin'),
+                document.getElementById('fKolab')
+            ];
+            let filled = 0;
+            let total = fields.length;
+            fields.forEach(f => {
+                if (f && f.value && f.value !== '') filled++;
+            });
+            const pct = total > 0 ? Math.round((filled / total) * 100) : 0;
+            const fill = document.getElementById('progressFill');
+            const text = document.getElementById('progressText');
+            if (fill) fill.style.width = Math.min(pct, 100) + '%';
+            if (text) text.textContent = Math.min(pct, 100) + '% selesai';
+        }
+
+        // ============================================================
+        // TOAST
+        // ============================================================
+        function showToast(message, type) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast ' + (type || 'info');
+            setTimeout(() => toast.classList.add('show'), 10);
+            clearTimeout(toast._timer);
+            toast._timer = setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // ============================================================
+        // COPY LINK
+        // ============================================================
+        function copyLink() {
+            const input = document.getElementById('shareLink');
+            input.select();
+            document.execCommand('copy');
+            showToast('📋 Link berhasil disalin!', 'success');
+        }
+
+        // ============================================================
+        // PRINT KUESIONER
+        // ============================================================
+        function printKuesioner() {
+            const names = dataStore.siswa;
+            let options = names.map(n => `[ ] ${n}`).join('\n');
+            const content = `
+                    <!DOCTYPE html>
+                    <html>
+                    <head><title>Kuesioner Sosiogram</title>
+                    <style>
+                        body { font-family: Arial; padding:40px; max-width:800px; margin:auto; }
+                        h1 { color:#4A90D9; }
+                        .header { text-align:center; border-bottom:2px solid #4A90D9; padding-bottom:10px; margin-bottom:20px; }
+                        .header .brand { color:#7B5EA7; }
+                        .q { margin:16px 0; }
+                        .q label { font-weight:600; }
+                        .q .options { margin:6px 0 6px 20px; font-size:13px; }
+                        .footer { margin-top:30px; text-align:center; color:#A0AEC0; border-top:1px solid #E2E8F0; padding-top:10px; }
+                        .watermark { color:#CBD5E0; font-size:12px; }
+                    </style>
+                    </head>
+                    <body>
+                        <div class="header">
+                            <h1>🌈 SOSIO DIGITAL</h1>
+                            <div class="brand">by NaFaS BK</div>
+                            <p style="color:#718096;">Kuesioner Sosiogram</p>
+                        </div>
+
+                        <div style="margin:20px 0;">
+                            <p><strong>Nama:</strong> _______________</p>
+                            <p><strong>Kelas:</strong> _______________</p>
+                        </div>
+
+                        <div class="q">
+                            <label>👫 2 Teman yang KAMU SUKAI:</label>
+                            <div class="options">${options}</div>
+                            <div class="options">${options}</div>
+                        </div>
+
+                        <div class="q">
+                            <label>😕 2 Teman yang KURANG NYAMAN:</label>
+                            <div class="options">${options}</div>
+                            <div class="options">${options}</div>
+                        </div>
+
+                        <div class="q">
+                            <label>⭐ 1 Teman dengan JIWA KEPEMIMPINAN:</label>
+                            <div class="options">${options}</div>
+                        </div>
+
+                        <div class="q">
+                            <label>🤝 1 Teman MUDAH DIAJAK KOLABORASI:</label>
+                            <div class="options">${options}</div>
+                        </div>
+
+                        <div class="footer">
+                            <div class="watermark">🌟 NaFaS BK - Solusi Sosiogram Digital</div>
+                            <div style="font-size:11px; color:#A0AEC0; margin-top:4px;">🔒 Data ini rahasia dan hanya untuk guru</div>
+                        </div>
+                    </body>
+                    </html>
+                `;
+            const win = window.open('', '_blank', 'width=800,height=600');
+            win.document.write(content);
+            win.document.close();
+            setTimeout(() => win.print(), 500);
+        }
+
+        // ============================================================
+        // CETAK PDF
+        // ============================================================
+        function cetakPDF() {
+            if (dataStore.hasil.length === 0) {
+                showToast('⚠️ Belum ada data untuk dicetak!', 'error');
+                return;
+            }
+
+            const stats = {};
+            dataStore.siswa.forEach(n => {
+                stats[n] = { suka: 0, kurang: 0, pemimpin: 0, kolab: 0 };
+            });
+            dataStore.hasil.forEach(h => {
+                ['suka1', 'suka2'].forEach(f => { if (h[f] && stats[h[f]]) stats[h[f]].suka++; });
+                ['kurang1', 'kurang2'].forEach(f => { if (h[f] && stats[h[f]]) stats[h[f]].kurang++; });
+                if (h.pemimpin && stats[h.pemimpin]) stats[h.pemimpin].pemimpin++;
+                if (h.kolab && stats[h.kolab]) stats[h.kolab].kolab++;
+            });
+
+            let tableRows = '';
+            const sorted = dataStore.siswa.map(n => {
+                const s = stats[n] || { suka: 0, kurang: 0, pemimpin: 0, kolab: 0 };
+                return { nama: n, ...s };
+            }).sort((a, b) => (b.suka + b.pemimpin + b.kolab) - (a.suka + a.pemimpin + a.kolab));
+
+            sorted.forEach((s, i) => {
+                const total = s.suka + s.kurang + s.pemimpin + s.kolab;
+                tableRows += `
+                        <tr>
+                            <td>${i+1}</td>
+                            <td>${s.nama}</td>
+                            <td>${s.suka}</td>
+                            <td>${s.kurang}</td>
+                            <td>${s.pemimpin}</td>
+                            <td>${s.kolab}</td>
+                            <td>${total}</td>
+                        </tr>
+                    `;
+            });
+
+            const content = `
+                    <!DOCTYPE html>
+                    <html>
+                    <head><title>Hasil Sosiogram - NaFaS BK</title>
+                    <style>
+                        body { font-family: Arial; padding:30px; max-width:1000px; margin:auto; }
+                        .header { text-align:center; border-bottom:3px solid #4A90D9; padding-bottom:10px; margin-bottom:20px; }
+                        .header h1 { color:#4A90D9; font-size:28px; margin:0; }
+                        .header .brand { color:#7B5EA7; font-size:14px; }
+                        .header .sub { color:#718096; font-size:13px; }
+                        table { width:100%; border-collapse:collapse; font-size:13px; margin:16px 0; }
+                        th { background:#4A90D9; color:white; padding:8px; text-align:center; }
+                        td { padding:6px 8px; text-align:center; border-bottom:1px solid #E2E8F0; }
+                        tr:nth-child(even) { background:#F7FAFC; }
+                        .footer { margin-top:30px; text-align:center; color:#A0AEC0; border-top:1px solid #E2E8F0; padding-top:10px; font-size:12px; }
+                        .watermark { color:#CBD5E0; }
+                        .badge { display:inline-block; padding:2px 8px; border-radius:12px; font-weight:700; font-size:11px; }
+                        .badge.gold { background:#FEF3C7; color:#D69E2E; }
+                        .badge.silver { background:#EDF2F7; color:#718096; }
+                        .badge.bronze { background:#FED7D0; color:#DD6B20; }
+                        .security { background:#FFF5F5; padding:10px 16px; border-left:4px solid #FC8181; margin:16px 0; font-size:13px; color:#4A5568; }
+                        .security strong { color:#C53030; }
+                    </style>
+                    </head>
+                    <body>
+                        <div class="header">
+                            <h1>🌈 SOSIO DIGITAL</h1>
+                            <div class="brand">by NaFaS BK</div>
+                            <div class="sub">Laporan Hasil Sosiogram</div>
+                            <div style="font-size:12px; color:#A0AEC0;">Tanggal: ${new Date().toLocaleDateString('id-ID')}</div>
+                            <div style="font-size:12px; color:#A0AEC0;">Total Responden: ${dataStore.hasil.length} siswa</div>
+                        </div>
+
+                        <table>
+                            <thead>
+                                <tr><th>No</th><th>Nama</th><th>👍 Disukai</th><th>😕 Kurang</th><th>⭐ Pemimpin</th><th>🤝 Kolab</th><th>Total</th></tr>
+                            </thead>
+                            <tbody>${tableRows}</tbody>
+                        </table>
+
+                        <div class="security">
+                            <strong>🔒 Data ini RAHASIA</strong><br>
+                            Hanya untuk kepentingan Bimbingan dan Konseling. Jangan bagikan ke siswa!
+                        </div>
+
+                        <div class="footer">
+                            <div class="watermark">🌟 NaFaS BK - Solusi Sosiogram Digital</div>
+                            <div style="font-size:11px; color:#A0AEC0;">Laporan ini sah dan dapat dipertanggungjawabkan.</div>
+                        </div>
+                    </body>
+                    </html>
+                `;
+
+            const win = window.open('', '_blank', 'width=1000,height=800');
+            win.document.write(content);
+            win.document.close();
+            setTimeout(() => win.print(), 500);
+            showToast('🖨️ PDF sedang diproses...', 'info');
+        }
+
+        // ============================================================
+        // EXPORT EXCEL
+        // ============================================================
+        function exportExcel() {
+            if (dataStore.hasil.length === 0) {
+                showToast('⚠️ Belum ada data untuk diekspor!', 'error');
+                return;
+            }
+            let csv = 'No,Nama,Kelas,Teman Disukai 1,Teman Disukai 2,Kurang Nyaman 1,Kurang Nyaman 2,Jiwa Pemimpin,Mudah Kolaborasi\n';
+            dataStore.hasil.forEach((h, i) => {
+                csv +=
+                    `${i+1},${h.nama || ''},${h.kelas || ''},${h.suka1 || ''},${h.suka2 || ''},${h.kurang1 || ''},${h.kurang2 || ''},${h.pemimpin || ''},${h.kolab || ''}\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `Hasil_Sosiogram_${new Date().toISOString().slice(0,10)}.csv`;
+            link.click();
+            showToast('📥 Data berhasil diekspor!', 'success');
+        }
+
+        // ============================================================
+        // REFRESH & RESET
+        // ============================================================
+        function refreshData() {
+            renderSemua();
+            showToast('🔄 Data diperbarui!', 'info');
+        }
+
+        function resetData() {
+            if (confirm('⚠️ Hapus SEMUA data hasil? Tindakan ini tidak bisa dibatalkan!')) {
+                dataStore.hasil = [];
+                saveData();
+                showToast('🗑️ Semua data hasil dihapus', 'info');
+            }
+        }
+
+        // ============================================================
+        // INIT
+        // ============================================================
+        loadData();
+        console.log('🌈 SOSIO DIGITAL - by NaFaS BK');
+        console.log('📱 Aplikasi Sosiogram Digital v2.0 siap digunakan!');
+        console.log('👥 Jumlah siswa:', dataStore.siswa.length);
+        console.log('📋 Jumlah data hasil:', dataStore.hasil.length);
+    </script>
+
+</body>
+</html>
