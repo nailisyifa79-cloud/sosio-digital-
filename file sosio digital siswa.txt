@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sosio Digital - Siswa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================================
+           RESET & BASE
+           ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f0f4ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* ============================================================
+           CONTAINER
+           ============================================================ */
+        .container {
+            width: 420px;
+            max-width: 100%;
+            background: #ffffff;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(74, 144, 217, 0.25);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ============================================================
+           HEADER
+           ============================================================ */
+        .header {
+            background: linear-gradient(135deg, #4A90D9, #7B5EA7);
+            padding: 20px 24px 28px;
+            color: white;
+            text-align: center;
+        }
+
+        .header .stars {
+            font-size: 14px;
+            letter-spacing: 4px;
+            opacity: 0.7;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin: 4px 0;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 span {
+            display: inline-block;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .header .sub {
+            font-size: 13px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .header .brand {
+            font-size: 11px;
+            font-weight: 600;
+            opacity: 0.8;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        /* ============================================================
+           CARD INFO
+           ============================================================ */
+        .card-info {
+            background: white;
+            margin: -12px 20px 16px;
+            padding: 16px 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .card-info .icon {
+            font-size: 36px;
+        }
+
+        .card-info h3 {
+            color: #2D3748;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .card-info p {
+            color: #718096;
+            font-size: 12px;
+            margin: 2px 0;
+            line-height: 1.6;
+        }
+
+        .card-info .badge {
+            display: inline-block;
+            background: #E8F5E9;
+            color: #38A169;
+            padding: 3px 14px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        /* ============================================================
+           PROGRESS BAR
+           ============================================================ */
+        .progress-wrap {
+            padding: 0 20px 4px;
+        }
+
+        .progress-wrap .bar {
+            width: 100%;
+            height: 4px;
+            background: #EDF2F7;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-wrap .bar .fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #4A90D9, #7B5EA7);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-wrap .text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #A0AEC0;
+            margin-top: 2px;
+        }
+
+        /* ============================================================
+           FORM
+           ============================================================ */
+        .form-section {
+            padding: 0 20px 20px;
+        }
+
+        .section-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #2D3748;
+            margin: 16px 0 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title .line {
+            flex: 1;
+            height: 2px;
+            background: #E2E8F0;
+        }
+
+        .section-sub {
+            font-size: 12px;
+            color: #718096;
+            margin: -4px 0 10px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #4A5568;
+            margin-bottom: 3px;
+        }
+
+        .form-group label .required {
+            color: #FC8181;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 2px solid #E2E8F0;
+            border-radius: 12px;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            background: #F7FAFC;
+            color: #2D3748;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #4A90D9;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.15);
+            background: white;
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234A90D9' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+            cursor: pointer;
+        }
+
+        .form-group .icon-input {
+            position: relative;
+        }
+
+        .form-group .icon-input .emoji {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+        }
+
+        .form-group .icon-input input,
+        .form-group .icon-input select {
+            padding-left: 40px;
+        }
+
+        .form-group .hint {
+            font-size: 11px;
+            color: #A0AEC0;
+            margin-top: 2px;
+        }
+
+        /* ============================================================
+           TOMBOL
+           ============================================================ */
+        .btn-success {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #68D391, #48BB78);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 25px rgba(104, 211, 145, 0.4);
+            margin-top: 12px;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 35px rgba(104, 211, 145, 0.5);
+        }
+
+        .btn-success:active {
+            transform: scale(0.97);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #4A90D9;
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(74, 144, 217, 0.3);
+            margin-top: 8px;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(74, 144, 217, 0.4);
+        }
+
+        /* ============================================================
+           SUCCESS PAGE
+           ============================================================ */
+        .success-page {
+            padding: 30px 20px 20px;
+            text-align: center;
+        }
+
+        .success-page .check {
+            font-size: 64px;
+            animation: bounce 1s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .success-page h2 {
+            font-size: 22px;
+            color: #2D3748;
+            margin: 10px 0 6px;
+        }
+
+        .success-page p {
+            color: #718096;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .tip-box {
+            background: #EBF8FF;
+            border-radius: 16px;
+            padding: 14px 16px;
+            margin-top: 16px;
+            text-align: left;
+            border-left: 4px solid #4A90D9;
+        }
+
+        .tip-box strong {
+            color: #2B6CB0;
+        }
+
+        .tip-box p {
+            font-size: 13px;
+            color: #2D3748;
+            margin: 2px 0 0;
+        }
+
+        /* ============================================================
+           WATERMARK
+           ============================================================ */
+        .watermark {
+            text-align: center;
+            padding: 14px 0 16px;
+            color: #CBD5E0;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border-top: 1px solid #F0F4FF;
+            margin-top: 6px;
+        }
+
+        /* ============================================================
+           SECURITY BADGE
+           ============================================================ */
+        .security-badge {
+            background: #FFF5F5;
+            border-radius: 12px;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0 4px;
+            border-left: 4px solid #FC8181;
+        }
+
+        .security-badge .icon {
+            font-size: 18px;
+        }
+
+        .security-badge .text {
+            font-size: 11px;
+            color: #4A5568;
+            font-weight: 500;
+        }
+
+        .security-badge .text strong {
+            color: #C53030;
+        }
+
+        /* ============================================================
+           HIDDEN
+           ============================================================ */
+        .hidden {
+            display: none !important;
+        }
+
+        /* ============================================================
+           TOAST
+           ============================================================ */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2D3748;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 16px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: all 0.5s ease;
+            z-index: 999;
+            pointer-events: none;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .toast.success {
+            background: #38A169;
+        }
+
+        .toast.error {
+            background: #E53E3E;
+        }
+
+        .toast.info {
+            background: #4A90D9;
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 440px) {
+            .container {
+                border-radius: 24px;
+            }
+            .header h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== TOAST ===== -->
+    <div id="toast" class="toast"></div>
+
+    <!-- ===== CONTAINER ===== -->
+    <div class="container">
+
+        <!-- ===== HEADER ===== -->
+        <div class="header">
+            <div class="stars">✦ ✦ ✦ ✦ ✦</div>
+            <h1>🌈 SOSIO <span>✨</span> DIGITAL</h1>
+            <div class="sub">Sosiogram Digital untuk BK</div>
+            <div class="brand">by NaFaS BK</div>
+        </div>
+
+        <!-- ===== CARD INFO ===== -->
+        <div class="card-info">
+            <div class="icon">📋</div>
+            <h3>Kuesioner Sosiogram</h3>
+            <p>
+                Kenali teman-temanmu lebih dalam!<br />
+                Jawabanmu <strong>100% rahasia</strong> dan hanya<br />
+                guru yang dapat melihat hasilnya.
+            </p>
+            <div class="badge">🔒 AMAN & TERPERCAYA</div>
+        </div>
+
+        <!-- ===== PROGRESS BAR ===== -->
+        <div class="progress-wrap">
+            <div class="bar">
+                <div class="fill" id="progressFill"></div>
+            </div>
+            <div class="text">
+                <span>Progress</span>
+                <span id="progressText">0% selesai</span>
+            </div>
+        </div>
+
+        <!-- ===== FORM ===== -->
+        <div id="page-form" class="form-section">
+
+            <!-- Identitas -->
+            <div class="section-title">📝 Identitas Diri <span class="line"></span></div>
+
+            <div class="form-group">
+                <label>✏️ Nama Lengkap <span class="required">*</span></label>
+                <div class="icon-input">
+                    <span class="emoji">👤</span>
+                    <input type="text" id="fNama" placeholder="Masukkan nama lengkap" oninput="updateProgress()" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>📚 Kelas <span class="required">*</span></label>
+                <div class="icon-input">
+                    <span class="emoji">🏫</span>
+                    <select id="fKelas" onchange="updateProgress()">
+                        <option value="">▼ Pilih Kelas</option>
+                        <option>VII A</option><option>VII B</option><option>VII C</option>
+                        <option>VIII A</option><option>VIII B</option><option>VIII C</option>
+                        <option>IX A</option><option>IX B</option><option>IX C</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Teman Disukai -->
+            <div class="section-title" style="margin-top:20px;">👫 Teman yang Disukai <span class="line"></span></div>
+            <div class="section-sub">Pilih 2 teman</div>
+
+            <div class="form-group">
+                <label>1️⃣ Teman Disukai <span class="required">*</span></label>
+                <div class="icon-input">
+                    <span class="emoji">❤️</span>
+                    <select id="fSuka1" onchange="updateProgress()">
+                        <option value="">▼ Pilih teman</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>2️⃣ Teman Disukai <span class="required">*</span></label>
+                <div class="icon-input">
+                    <span class="emoji">💛</span>
+                    <select id="fSuka2" onchange="updateProgress()">
+                        <option value="">▼ Pilih teman</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Kurang Nyaman -->
+            <div class="section-title" style="margin-top:20px;">😕 Teman Kurang Nyaman <span class="line"></span></div>
+            <div class="section-sub">Pilih 2 teman</div>
+
+            <div class="form-group">
+                <label>1️⃣ Kurang Nyaman <span class="required">*</span></label>
+                <div class="icon-input">
+                    <span class="emoji">😐</span>
+                    <select id="fKurang1" onchange="updateProgress()">
+                        <option value="">▼ Pilih teman</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>2️⃣ Kurang Nyaman <span class="required">*</span></label>
+                <div class="icon-input">
+                    <span class="emoji">😟</span>
+                    <select id="fKurang2" onchange="updateProgress()">
+                        <option value="">▼ Pilih teman</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Jiwa Kepemimpinan -->
+            <div class="section-title" style="margin-top:20px;">⭐ Jiwa Kepemimpinan <span class="line"></span></div>
+            <div class="section-sub">Pilih 1 teman</div>
+
+            <div class="form-group">
+                <label>👑 Pemimpin Terbaik <span class="required">*</span></label>
+                <div class="icon-input">
+                    <span class="emoji">⭐</span>
+                    <select id="fPemimpin" onchange="updateProgress()">
+                        <option value="">▼ Pilih teman</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Mudah Kolaborasi -->
+            <div class="section-title" style="margin-top:20px;">🤝 Mudah Diajak Kolaborasi <span class="line"></span></div>
+            <div class="section-sub">Pilih 1 teman</div>
+
+            <div class="form-group">
+                <label>🤝 Kolaborator Terbaik <span class="required">*</span></label>
+                <div class="icon-input">
+                    <span class="emoji">🤝</span>
+                    <select id="fKolab" onchange="updateProgress()">
+                        <option value="">▼ Pilih teman</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- ===== KEAMANAN ===== -->
+            <div class="security-badge">
+                <span class="icon">🔒</span>
+                <span class="text">
+                    <strong>100% RAHASIA</strong><br />
+                    Hanya guru yang dapat melihat hasil
+                </span>
+            </div>
+
+            <!-- ===== TOMBOL KIRIM ===== -->
+            <button class="btn-success" onclick="submitForm()">✅ SIMPAN & KIRIM</button>
+
+            <div style="font-size:12px; color:#FC8181; text-align:center; margin-top:8px;">
+                ⚠️ Pastikan semua data sudah terisi dengan benar!
+            </div>
+
+            <div class="watermark">🌟 NaFaS BK - Trusted Since 2026</div>
+        </div>
+
+        <!-- ===== SUCCESS PAGE ===== -->
+        <div id="page-success" class="hidden">
+            <div style="background: linear-gradient(135deg, #4A90D9, #7B5EA7); padding:30px 20px 40px; text-align:center;">
+                <div style="font-size:12px; opacity:0.7; color:white;">✦ ✦ ✦ ✦ ✦</div>
+            </div>
+
+            <div class="success-page">
+                <div class="check">🎉✅🎉</div>
+                <h2>TERIMA KASIH!</h2>
+                <p>
+                    Jawabanmu sudah tersimpan dengan aman. 🌟<br />
+                    Kamu hebat sudah mengisi dengan jujur! 💪
+                </p>
+
+                <button class="btn-secondary" onclick="resetForm()">🔄 ISI LAGI</button>
+
+                <div class="tip-box">
+                    <strong>💡 Tahukah kamu?</strong>
+                    <p>Kejujuran adalah awal dari pertemanan yang baik. Terima kasih sudah berkontribusi! 😊</p>
+                </div>
+
+                <div class="watermark" style="border-top:none; margin-top:16px;">🌟 NaFaS BK</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ============================================================
+    JAVASCRIPT
+    ============================================================ -->
+    <script>
+        // ============================================================
+        // DATA STORE (tersimpan di localStorage)
+        // ============================================================
+        let dataStore = {
+            siswa: ['Andi', 'Budi', 'Citra', 'Dedi', 'Eka', 'Fani', 'Gita', 'Hadi', 'Indra', 'Joko'],
+            hasil: []
+        };
+
+        // Load dari localStorage
+        function loadData() {
+            try {
+                const saved = localStorage.getItem('sosioDigitalData');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    dataStore.siswa = parsed.siswa || dataStore.siswa;
+                    dataStore.hasil = parsed.hasil || [];
+                }
+            } catch (e) {}
+            renderDropdowns();
+        }
+
+        function saveData() {
+            localStorage.setItem('sosioDigitalData', JSON.stringify(dataStore));
+        }
+
+        // ============================================================
+        // RENDER DROPDOWN
+        // ============================================================
+        function renderDropdowns() {
+            const selects = ['fSuka1', 'fSuka2', 'fKurang1', 'fKurang2', 'fPemimpin', 'fKolab'];
+            selects.forEach(id => {
+                const sel = document.getElementById(id);
+                if (!sel) return;
+                const current = sel.value;
+                sel.innerHTML = '<option value="">▼ Pilih teman</option>';
+                dataStore.siswa.forEach(nama => {
+                    const opt = document.createElement('option');
+                    opt.value = nama;
+                    opt.textContent = nama;
+                    sel.appendChild(opt);
+                });
+                if (current && dataStore.siswa.includes(current)) {
+                    sel.value = current;
+                }
+            });
+        }
+
+        // ============================================================
+        // PROGRESS BAR
+        // ============================================================
+        function updateProgress() {
+            const fields = [
+                document.getElementById('fNama'),
+                document.getElementById('fKelas'),
+                document.getElementById('fSuka1'),
+                document.getElementById('fSuka2'),
+                document.getElementById('fKurang1'),
+                document.getElementById('fKurang2'),
+                document.getElementById('fPemimpin'),
+                document.getElementById('fKolab')
+            ];
+
+            let filled = 0;
+            let total = fields.length;
+
+            fields.forEach(f => {
+                if (f && f.value && f.value !== '') filled++;
+            });
+
+            const pct = total > 0 ? Math.round((filled / total) * 100) : 0;
+
+            const fill = document.getElementById('progressFill');
+            const text = document.getElementById('progressText');
+
+            if (fill) fill.style.width = Math.min(pct, 100) + '%';
+            if (text) text.textContent = Math.min(pct, 100) + '% selesai';
+        }
+
+        // ============================================================
+        // SUBMIT FORM
+        // ============================================================
+        function submitForm() {
+            const nama = document.getElementById('fNama').value.trim();
+            const kelas = document.getElementById('fKelas').value;
+            const suka1 = document.getElementById('fSuka1').value;
+            const suka2 = document.getElementById('fSuka2').value;
+            const kurang1 = document.getElementById('fKurang1').value;
+            const kurang2 = document.getElementById('fKurang2').value;
+            const pemimpin = document.getElementById('fPemimpin').value;
+            const kolab = document.getElementById('fKolab').value;
+
+            // Validasi
+            if (!nama || !kelas || !suka1 || !suka2 || !kurang1 || !kurang2 || !pemimpin || !kolab) {
+                showToast('⚠️ Semua data harus diisi!', 'error');
+                return;
+            }
+
+            if (suka1 === suka2) {
+                showToast('⚠️ Teman disukai 1 dan 2 harus berbeda!', 'error');
+                return;
+            }
+
+            if (kurang1 === kurang2) {
+                showToast('⚠️ Teman kurang nyaman 1 dan 2 harus berbeda!', 'error');
+                return;
+            }
+
+            // Simpan data
+            dataStore.hasil.push({
+                nama: nama,
+                kelas: kelas,
+                suka1: suka1,
+                suka2: suka2,
+                kurang1: kurang1,
+                kurang2: kurang2,
+                pemimpin: pemimpin,
+                kolab: kolab,
+                timestamp: new Date().toISOString()
+            });
+
+            saveData();
+
+            // Tampilkan halaman sukses
+            document.getElementById('page-form').classList.add('hidden');
+            document.getElementById('page-success').classList.remove('hidden');
+
+            showToast('✅ Jawaban berhasil disimpan!', 'success');
+        }
+
+        // ============================================================
+        // RESET FORM
+        // ============================================================
+        function resetForm() {
+            document.getElementById('fNama').value = '';
+            document.getElementById('fKelas').value = '';
+            ['fSuka1', 'fSuka2', 'fKurang1', 'fKurang2', 'fPemimpin', 'fKolab'].forEach(id => {
+                document.getElementById(id).value = '';
+            });
+
+            document.getElementById('page-success').classList.add('hidden');
+            document.getElementById('page-form').classList.remove('hidden');
+
+            updateProgress();
+            window.scrollTo(0, 0);
+        }
+
+        // ============================================================
+        // TOAST
+        // ============================================================
+        function showToast(message, type) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast ' + (type || 'info');
+            setTimeout(() => toast.classList.add('show'), 10);
+            clearTimeout(toast._timer);
+            toast._timer = setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // ============================================================
+        // INIT
+        // ============================================================
+        loadData();
+        updateProgress();
+
+        console.log('🌈 SOSIO DIGITAL - by NaFaS BK');
+        console.log('📱 Halaman SISWA - Sosiogram Digital');
+        console.log('👥 Jumlah siswa:', dataStore.siswa.length);
+    </script>
+
+</body>
+</html>
